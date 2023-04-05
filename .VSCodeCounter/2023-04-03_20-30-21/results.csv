@@ -1,0 +1,30 @@
+"filename", "language", "C#", "XML", "JSON with Comments", "JSON", "MonoGame Content Builder", "Properties", "comment", "blank", "total"
+"c:\GitHub\Match3MonoGame\Match3\Content\Content.mgcb", "MonoGame Content Builder", 0, 0, 0, 0, 16, 0, 4, 8, 28
+"c:\GitHub\Match3MonoGame\Match3\Game1.cs", "C#", 75, 0, 0, 0, 0, 0, 1, 19, 95
+"c:\GitHub\Match3MonoGame\Match3\Match3.csproj", "XML", 0, 30, 0, 0, 0, 0, 0, 0, 30
+"c:\GitHub\Match3MonoGame\Match3\Program.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 2, 16
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\BlueCellElement.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Cell.cs", "C#", 33, 0, 0, 0, 0, 0, 0, 3, 36
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\CellType.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Factory\CellFactory.cs", "C#", 23, 0, 0, 0, 0, 0, 0, 1, 24
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\GreenCellElement.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\RedCellElement.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Config\GameConfig.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 1, 15
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\CellElementDrawer.cs", "C#", 17, 0, 0, 0, 0, 0, 0, 2, 19
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\Drawer.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\FieldDrawer.cs", "C#", 47, 0, 0, 0, 0, 0, 0, 6, 53
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Field\GameField.cs", "C#", 35, 0, 0, 0, 0, 0, 0, 4, 39
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\ClickDetector.cs", "C#", 49, 0, 0, 0, 0, 0, 1, 11, 61
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\InputController.cs", "C#", 22, 0, 0, 0, 0, 0, 0, 6, 28
+"c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.deps.json", "JSON", 0, 0, 0, 92, 0, 0, 0, 0, 92
+"c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.runtimeconfig.dev.json", "JSON", 0, 0, 0, 8, 0, 0, 0, 0, 8
+"c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.runtimeconfig.json", "JSON", 0, 0, 0, 12, 0, 0, 0, 0, 12
+"c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs", "C#", 3, 0, 0, 0, 0, 0, 1, 1, 5
+"c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\Match3.AssemblyInfo.cs", "C#", 9, 0, 0, 0, 0, 0, 9, 5, 23
+"c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\Match3.GeneratedMSBuildEditorConfig.editorconfig", "Properties", 0, 0, 0, 0, 0, 3, 0, 1, 4
+"c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.dgspec.json", "JSON", 0, 0, 0, 77, 0, 0, 0, 0, 77
+"c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.g.props", "XML", 0, 21, 0, 0, 0, 0, 0, 0, 21
+"c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.g.targets", "XML", 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\GitHub\Match3MonoGame\Match3\obj\project.assets.json", "JSON", 0, 0, 0, 252, 0, 0, 0, 0, 252
+"c:\GitHub\Match3MonoGame\Match3\workspace.code-workspace", "JSON with Comments", 0, 0, 7, 0, 0, 0, 0, 0, 7
+"Total", "-", 391, 58, 7, 441, 16, 3, 16, 78, 1010

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "naRcWdbVwiGjk7bXPBLCOlDaHHlrRn3UhptfqhW/wLhSyca6swiy834yNtzRfkiThXK8xtnZk+yvjCnVbCe7yQ==",
+  "success": true,
+  "projectFilePath": "C:\\GitHub\\Match3MonoGame\\Match3\\Match3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eugen\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\eugen\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\eugen\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
+  ],
+  "logs": []
+}

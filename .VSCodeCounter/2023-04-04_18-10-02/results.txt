@@ -1,0 +1,81 @@
+Date : 2023-04-04 18:10:02
+Directory : c:\GitHub\Match3MonoGame\Match3
+Total : 33 files,  1144 codes, 17 comments, 102 blanks, all 1263 lines
+
+Languages
++--------------------------+------------+------------+------------+------------+------------+
+| language                 | files      | code       | comment    | blank      | total      |
++--------------------------+------------+------------+------------+------------+------------+
+| C#                       |         22 |        619 |         13 |         93 |        725 |
+| JSON                     |          5 |        441 |          0 |          0 |        441 |
+| XML                      |          3 |         58 |          0 |          0 |         58 |
+| MonoGame Content Builder |          1 |         16 |          4 |          8 |         28 |
+| JSON with Comments       |          1 |          7 |          0 |          0 |          7 |
+| Properties               |          1 |          3 |          0 |          1 |          4 |
++--------------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                        |         33 |      1,144 |         17 |        102 |      1,263 |
+| . (Files)                                                                                                |          4 |         98 |          0 |         11 |        109 |
+| Content                                                                                                  |          1 |         16 |          4 |          8 |         28 |
+| Scripts                                                                                                  |         18 |        546 |          3 |         76 |        625 |
+| Scripts\Core                                                                                             |         18 |        546 |          3 |         76 |        625 |
+| Scripts\Core\Cells                                                                                       |          6 |        153 |          0 |         15 |        168 |
+| Scripts\Core\Cells (Files)                                                                               |          5 |        130 |          0 |         14 |        144 |
+| Scripts\Core\Cells\Factory                                                                               |          1 |         23 |          0 |          1 |         24 |
+| Scripts\Core\Config                                                                                      |          1 |         14 |          0 |          1 |         15 |
+| Scripts\Core\Drawer                                                                                      |          5 |        136 |          0 |         15 |        151 |
+| Scripts\Core\Field                                                                                       |          1 |         48 |          0 |          4 |         52 |
+| Scripts\Core\Input                                                                                       |          2 |         86 |          3 |         20 |        109 |
+| Scripts\Core\StateMachine                                                                                |          3 |        109 |          0 |         21 |        130 |
+| bin                                                                                                      |          3 |        112 |          0 |          0 |        112 |
+| bin\Debug                                                                                                |          3 |        112 |          0 |          0 |        112 |
+| bin\Debug\netcoreapp3.1                                                                                  |          3 |        112 |          0 |          0 |        112 |
+| obj                                                                                                      |          7 |        372 |         10 |          7 |        389 |
+| obj (Files)                                                                                              |          4 |        357 |          0 |          0 |        357 |
+| obj\Debug                                                                                                |          3 |         15 |         10 |          7 |         32 |
+| obj\Debug\netcoreapp3.1                                                                                  |          3 |         15 |         10 |          7 |         32 |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------+--------------------------+------------+------------+------------+------------+
+| filename                                                                                                 | language                 | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+--------------------------+------------+------------+------------+------------+
+| c:\GitHub\Match3MonoGame\Match3\Content\Content.mgcb                                                     | MonoGame Content Builder |         16 |          4 |          8 |         28 |
+| c:\GitHub\Match3MonoGame\Match3\Game1.cs                                                                 | C#                       |         47 |          0 |          9 |         56 |
+| c:\GitHub\Match3MonoGame\Match3\Match3.csproj                                                            | XML                      |         30 |          0 |          0 |         30 |
+| c:\GitHub\Match3MonoGame\Match3\Program.cs                                                               | C#                       |         14 |          0 |          2 |         16 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\BlueCellElement.cs                                    | C#                       |         10 |          0 |          2 |         12 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Cell.cs                                               | C#                       |         91 |          0 |          7 |         98 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\CellType.cs                                           | C#                       |          9 |          0 |          1 |         10 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Factory\CellFactory.cs                                | C#                       |         23 |          0 |          1 |         24 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\GreenCellElement.cs                                   | C#                       |         10 |          0 |          2 |         12 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\RedCellElement.cs                                     | C#                       |         10 |          0 |          2 |         12 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Config\GameConfig.cs                                        | C#                       |         14 |          0 |          1 |         15 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ButtonDrawer.cs                                      | C#                       |         25 |          0 |          2 |         27 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\CellElementDrawer.cs                                 | C#                       |         17 |          0 |          2 |         19 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ContainerDrawer.cs                                   | C#                       |         29 |          0 |          3 |         32 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\Drawer.cs                                            | C#                       |         11 |          0 |          1 |         12 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\FieldDrawer.cs                                       | C#                       |         54 |          0 |          7 |         61 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Field\GameField.cs                                          | C#                       |         48 |          0 |          4 |         52 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\ClickDetector.cs                                      | C#                       |         64 |          3 |         14 |         81 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\InputController.cs                                    | C#                       |         22 |          0 |          6 |         28 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\GameState.cs                                   | C#                       |         60 |          0 |         15 |         75 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\MenuState.cs                                   | C#                       |         28 |          0 |          4 |         32 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\State.cs                                       | C#                       |         21 |          0 |          2 |         23 |
+| c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.deps.json                                 | JSON                     |         92 |          0 |          0 |         92 |
+| c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.runtimeconfig.dev.json                    | JSON                     |          8 |          0 |          0 |          8 |
+| c:\GitHub\Match3MonoGame\Match3\bin\Debug\netcoreapp3.1\Match3.runtimeconfig.json                        | JSON                     |         12 |          0 |          0 |         12 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs   | C#                       |          3 |          1 |          1 |          5 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\Match3.AssemblyInfo.cs                           | C#                       |          9 |          9 |          5 |         23 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Debug\netcoreapp3.1\Match3.GeneratedMSBuildEditorConfig.editorconfig | Properties               |          3 |          0 |          1 |          4 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.dgspec.json                                      | JSON                     |         77 |          0 |          0 |         77 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.g.props                                          | XML                      |         21 |          0 |          0 |         21 |
+| c:\GitHub\Match3MonoGame\Match3\obj\Match3.csproj.nuget.g.targets                                        | XML                      |          7 |          0 |          0 |          7 |
+| c:\GitHub\Match3MonoGame\Match3\obj\project.assets.json                                                  | JSON                     |        252 |          0 |          0 |        252 |
+| c:\GitHub\Match3MonoGame\Match3\workspace.code-workspace                                                 | JSON with Comments       |          7 |          0 |          0 |          7 |
+| Total                                                                                                    |                          |      1,144 |         17 |        102 |      1,263 |
++----------------------------------------------------------------------------------------------------------+--------------------------+------------+------------+------------+------------+

@@ -1,0 +1,42 @@
+Date : 2023-04-04 18:10:02
+Directory : c:\GitHub\Match3MonoGame\Match3
+Total : 10 files,  228 codes, 1 comments, 24 blanks, all 253 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         10 |        228 |          1 |         24 |        253 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                      |         10 |        228 |          1 |         24 |        253 |
+| . (Files)                                                              |          1 |        -28 |         -1 |        -10 |        -39 |
+| Scripts                                                                |          9 |        256 |          2 |         34 |        292 |
+| Scripts\Core                                                           |          9 |        256 |          2 |         34 |        292 |
+| Scripts\Core\Cells                                                     |          1 |         58 |          0 |          4 |         62 |
+| Scripts\Core\Drawer                                                    |          3 |         61 |          0 |          6 |         67 |
+| Scripts\Core\Field                                                     |          1 |         13 |          0 |          0 |         13 |
+| Scripts\Core\Input                                                     |          1 |         15 |          2 |          3 |         20 |
+| Scripts\Core\StateMachine                                              |          3 |        109 |          0 |         21 |        130 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                               | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\GitHub\Match3MonoGame\Match3\Game1.cs                               | C#       |        -28 |         -1 |        -10 |        -39 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Cell.cs             | C#       |         58 |          0 |          4 |         62 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ButtonDrawer.cs    | C#       |         25 |          0 |          2 |         27 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ContainerDrawer.cs | C#       |         29 |          0 |          3 |         32 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\FieldDrawer.cs     | C#       |          7 |          0 |          1 |          8 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Field\GameField.cs        | C#       |         13 |          0 |          0 |         13 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\ClickDetector.cs    | C#       |         15 |          2 |          3 |         20 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\GameState.cs | C#       |         60 |          0 |         15 |         75 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\MenuState.cs | C#       |         28 |          0 |          4 |         32 |
+| c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\State.cs     | C#       |         21 |          0 |          2 |         23 |
+| Total                                                                  |          |        228 |          1 |         24 |        253 |
++------------------------------------------------------------------------+----------+------------+------------+------------+------------+

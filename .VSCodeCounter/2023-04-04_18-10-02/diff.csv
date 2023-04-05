@@ -1,0 +1,12 @@
+"filename", "language", "C#", "comment", "blank", "total"
+"c:\GitHub\Match3MonoGame\Match3\Game1.cs", "C#", -28, -1, -10, -39
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Cells\Cell.cs", "C#", 58, 0, 4, 62
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ButtonDrawer.cs", "C#", 25, 0, 2, 27
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\ContainerDrawer.cs", "C#", 29, 0, 3, 32
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Drawer\FieldDrawer.cs", "C#", 7, 0, 1, 8
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Field\GameField.cs", "C#", 13, 0, 0, 13
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\Input\ClickDetector.cs", "C#", 15, 2, 3, 20
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\GameState.cs", "C#", 60, 0, 15, 75
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\MenuState.cs", "C#", 28, 0, 4, 32
+"c:\GitHub\Match3MonoGame\Match3\Scripts\Core\StateMachine\State.cs", "C#", 21, 0, 2, 23
+"Total", "-", 228, 1, 24, 253
