@@ -16,6 +16,8 @@ namespace Core.Cells.Factory
                     return new GreenCellElement(cellType, Color.Green, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Blue:
                     return new BlueCellElement(cellType, Color.Blue, x, y, GameConfig.CellSize, screenPos);
+                case CellType.Empty:
+                    return new EmptyCellElement(cellType, Color.Gray, x, y, GameConfig.CellSize, screenPos);
                 default:
                     throw new ArgumentException($"Invalid cell type '{cellType}'", nameof(cellType));
             }

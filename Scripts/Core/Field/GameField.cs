@@ -32,7 +32,7 @@ namespace Core.Field
                 {
                     Field[x, y] = new Cell(x, y, GameConfig.CellSize, Vector2.Zero);
                     Array values = Enum.GetValues(typeof(CellType));
-                    int index = random.Next(values.Length);
+                    int index = random.Next(values.Length-1);
                     CellType desiredCellType = (CellType)values.GetValue(index);
                     Field[x, y].CellElement = CellFactory.CreateCellElement(desiredCellType, x, y, Vector2.Zero);
                 }

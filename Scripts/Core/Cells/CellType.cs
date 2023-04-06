@@ -4,6 +4,7 @@ namespace Core.Cells
     {
         Red,
         Green,
-        Blue
+        Blue,
+        Empty
     }
 }
