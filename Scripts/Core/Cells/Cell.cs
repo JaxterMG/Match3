@@ -61,21 +61,12 @@ namespace Core.Cells
 
         public void FindMatch(CellElement except, List<CellElement> chain)
         {
-            foreach(var neighbour in Neighbours)
-            {
-                if(_cellElement.CellType.Equals(neighbour.CellElement.CellType) && neighbour.CellElement != except)
-                {
-                    chain.Add(neighbour.CellElement);
-                    neighbour.FindMatch(_cellElement, chain);
-                }
-            }
-            if(chain.Count >= 3)
-            {
-                foreach(var chainElement in chain)
-                {
-                    chainElement.Color = Color.Black;
-                }
-            }
+           
+        }
+
+        public void ClearCell()
+        {
+            CellElement = Factory.CellFactory.CreateCellElement(CellType.Empty, (int)Position.X, (int)Position.Y, ScreenPos);
         }
     }
     public abstract class CellElement
