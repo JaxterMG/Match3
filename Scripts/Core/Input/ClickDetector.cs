@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core.Cells;
 using Core.Config;
@@ -56,24 +57,49 @@ namespace Core.Input.Detection
         }
         private void SwapElements()
         {
-            List<CellElement> chain = new List<CellElement>();
             foreach (var neighbour in _prevSelectedCell.Neighbours)
             {
                 if (neighbour.CellElement.Equals(_selectedCell.CellElement))
                 {
-                    var selectedPos = _selectedCell.Position;
-                    _selectedCell.CellElement = _gameField.Field[(int)_prevSelectedCell.Position.X, (int)_prevSelectedCell.Position.Y].CellElement;
-                    //_selectedCell.FindMatch(_selectedCell.CellElement, chain);
-                    _prevSelectedCell.CellElement = _gameField.Field[(int)selectedPos.X, (int)selectedPos.Y].CellElement;
-                    chain.Add(_selectedCell.CellElement);
-                    _selectedCell.FindMatch(_selectedCell.CellElement, chain);
-                    //_prevSelectedCell.FindMatch(_prevSelectedCell.CellElement, chain);
+                    CellElement temp = _selectedCell.CellElement;
+                    _selectedCell.CellElement = _prevSelectedCell.CellElement;
+                    _prevSelectedCell.CellElement = temp;
+                    var matches = FindMatches(_selectedCell);
                     
                     break;
                 }
             }
 
 
+        }
+        private List<Cell> FindMatches(Cell currentCell)
+        {
+            List<Cell> matches = new List<Cell>();
+            matches.Add(currentCell);
+            StartFindingRecursive(currentCell, currentCell, matches);
+            if(matches.Count >= 3)
+            {
+                foreach(var match in matches)
+                {
+                    match.ClearCell();
+                }
+            }
+
+            return matches;
+        }
+        private void StartFindingRecursive(Cell currentCell, Cell exceptionCell, List<Cell> matches)
+        {
+            foreach (var neighbour in currentCell.Neighbours)
+            {
+                if(matches.Contains(neighbour)) continue;
+                //if(neighbour == exceptionCell) continue;
+
+                if (neighbour.CellElement.CellType.Equals(currentCell.CellElement.CellType))
+                {
+                    matches.Add(neighbour);
+                    StartFindingRecursive(neighbour, currentCell, matches);
+                }
+            }
         }
 
     }
