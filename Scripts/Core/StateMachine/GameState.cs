@@ -41,7 +41,6 @@ namespace Core.StateMachine.Game
             GameConfig.SelectSizeModifier = 2;
 
             _gameField = new GameField(GameConfig.GameFieldSize, GameConfig.GameFieldSize);
-            GameConfig.Field = _gameField;
             _clickDetector = new ClickDetector(_gameField);
             _inputController.OnMouseClick += _clickDetector.CheckRectangle;
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Core.Cells;
 using Core.Config;
 using Core.Field;
+using MatchLogic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -56,7 +57,7 @@ namespace Core.Input.Detection
                 }
             }
         }
-        private void SwapElements()
+        private async void SwapElements()
         {
             foreach (var neighbour in _prevSelectedCell.Neighbours)
             {
@@ -65,43 +66,14 @@ namespace Core.Input.Detection
                     CellElement temp = _selectedCell.CellElement;
                     _selectedCell.CellElement = _prevSelectedCell.CellElement;
                     _prevSelectedCell.CellElement = temp;
-                    var matches = FindMatches(_selectedCell);
+                    await MatchFinder.FindMatches(_selectedCell);
+                    await MatchFinder.FindMatches(_prevSelectedCell);
 
                     break;
                 }
             }
 
 
-        }
-        private async Task FindMatches(Cell currentCell)
-        {
-            List<Cell> matches = new List<Cell>();
-
-            matches.Add(currentCell);
-            StartFindingRecursive(currentCell, currentCell, matches);
-            if (matches.Count >= 3)
-            {
-                foreach (var match in matches)
-                {
-                    match.ClearCell();
-                    
-                }
-                await GameConfig.Field.ShiftGrid();
-            }
-        }
-        private void StartFindingRecursive(Cell currentCell, Cell exceptionCell, List<Cell> matches)
-        {
-            foreach (var neighbour in currentCell.Neighbours)
-            {
-                if (matches.Contains(neighbour)) continue;
-                //if(neighbour == exceptionCell) continue;
-
-                if (neighbour.CellElement.CellType.Equals(currentCell.CellElement.CellType))
-                {
-                    matches.Add(neighbour);
-                    StartFindingRecursive(neighbour, currentCell, matches);
-                }
-            }
         }
 
     }

@@ -4,6 +4,7 @@ using Core.Cells.Factory;
 using Microsoft.Xna.Framework;
 using Core.Config;
 using System.Threading.Tasks;
+using MatchLogic;
 
 namespace Core.Field
 {
@@ -17,11 +18,14 @@ namespace Core.Field
 
         public GameField(int width, int height)
         {
+            GameConfig.Field = this;
+
             this.Width = width;
             this.Height = height;
             Field = new Cell[width, height];
             FillBoard();
             FindNeighbours();
+            CheckFieldMatches();
         }
 
         private void FillBoard()
@@ -49,6 +53,19 @@ namespace Core.Field
                 }
             }
         }
+        public async Task CheckFieldMatches()
+        {
+            int matches = 0;
+
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                   await MatchFinder.FindMatches(Field[x, y]);
+                }
+            }
+            if(matches == 0) return;
+        }
         public async Task ShiftGrid()
         {
             for (int x = 0; x < Field.GetLength(0); x++)
@@ -65,12 +82,16 @@ namespace Core.Field
                     {
                         Field[x, y + emtpyCels].CellElement = Field[x, y].CellElement;
                         Field[x, y].CellElement = CellFactory.CreateCellElement(CellType.Empty, x, y, Field[x, y].ScreenPos);
-
                     }
                 }
-                await Task.Delay(100);
+                if(emtpyCels > 0 || x == Field.GetLength(0)-1)
+                {
+                    await Task.Delay(300);
+                }
             }
+            CheckFieldMatches();
             await GameConfig.Field.GenerateNewCellElements();
+
         }
         public async Task GenerateNewCellElements()
         {
