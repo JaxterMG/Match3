@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\Match3MonoGame\\Match3\\Match3.csproj": {}
+    "C:\\Unityprojects\\Match3\\Match3.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\Match3MonoGame\\Match3\\Match3.csproj": {
+    "C:\\Unityprojects\\Match3\\Match3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\Match3MonoGame\\Match3\\Match3.csproj",
+        "projectUniqueName": "C:\\Unityprojects\\Match3\\Match3.csproj",
         "projectName": "Match3",
-        "projectPath": "C:\\GitHub\\Match3MonoGame\\Match3\\Match3.csproj",
+        "projectPath": "C:\\Unityprojects\\Match3\\Match3.csproj",
         "packagesPath": "C:\\Users\\eugen\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\Match3MonoGame\\Match3\\obj\\",
+        "outputPath": "C:\\Unityprojects\\Match3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\eugen\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\eugen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,8 +62,20 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.28, 3.1.28]"
+              "version": "[3.1.32, 3.1.32]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
             }
           ],
           "frameworkReferences": {
@@ -69,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

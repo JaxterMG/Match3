@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/GitHub/Match3MonoGame/Match3/Content/Sprites/Square.png</File>
+    <File>C:/Unityprojects/Match3/Content/Sprites/Square.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
