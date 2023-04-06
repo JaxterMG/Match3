@@ -1,3 +1,4 @@
+using System.Reflection.Emit;
 namespace Core.Cells
 {
     public enum CellType
@@ -5,6 +6,8 @@ namespace Core.Cells
         Red,
         Green,
         Blue,
+        Yellow,
+        Pink,
         Empty
     }
 }

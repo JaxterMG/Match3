@@ -16,6 +16,10 @@ namespace Core.Cells.Factory
                     return new GreenCellElement(cellType, Color.Green, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Blue:
                     return new BlueCellElement(cellType, Color.Blue, x, y, GameConfig.CellSize, screenPos);
+                case CellType.Yellow:
+                    return new BlueCellElement(cellType, Color.Yellow, x, y, GameConfig.CellSize, screenPos);
+                case CellType.Pink:
+                    return new BlueCellElement(cellType, Color.Pink, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Empty:
                     return new EmptyCellElement(cellType, Color.Gray, x, y, GameConfig.CellSize, screenPos);
                 default:
