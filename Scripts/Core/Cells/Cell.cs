@@ -60,11 +60,6 @@ namespace Core.Cells
             }
         }
 
-        public void FindMatch(CellElement except, List<CellElement> chain)
-        {
-           
-        }
-
         public void ClearCell()
         {
             CellElement = Factory.CellFactory.CreateCellElement(CellType.Empty, (int)Position.X, (int)Position.Y, ScreenPos);
