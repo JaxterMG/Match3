@@ -10,6 +10,7 @@ namespace Core.Cells
     {
         public readonly List<Cell> Neighbours;
         private CellElement _cellElement;
+        
         public CellElement CellElement
         {
             get

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.Cells;
 using Core.Config;
 using Core.Field;
@@ -65,33 +66,34 @@ namespace Core.Input.Detection
                     _selectedCell.CellElement = _prevSelectedCell.CellElement;
                     _prevSelectedCell.CellElement = temp;
                     var matches = FindMatches(_selectedCell);
-                    
+
                     break;
                 }
             }
 
 
         }
-        private List<Cell> FindMatches(Cell currentCell)
+        private async Task FindMatches(Cell currentCell)
         {
             List<Cell> matches = new List<Cell>();
+
             matches.Add(currentCell);
             StartFindingRecursive(currentCell, currentCell, matches);
-            if(matches.Count >= 3)
+            if (matches.Count >= 3)
             {
-                foreach(var match in matches)
+                foreach (var match in matches)
                 {
                     match.ClearCell();
+                    
                 }
+                await GameConfig.Field.ShiftGrid();
             }
-
-            return matches;
         }
         private void StartFindingRecursive(Cell currentCell, Cell exceptionCell, List<Cell> matches)
         {
             foreach (var neighbour in currentCell.Neighbours)
             {
-                if(matches.Contains(neighbour)) continue;
+                if (matches.Contains(neighbour)) continue;
                 //if(neighbour == exceptionCell) continue;
 
                 if (neighbour.CellElement.CellType.Equals(currentCell.CellElement.CellType))

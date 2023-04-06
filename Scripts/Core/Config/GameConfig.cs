@@ -1,9 +1,11 @@
+using Core.Field;
 using Microsoft.Xna.Framework;
 
 namespace Core.Config
 {
     public static class GameConfig
     {
+        public static GameField Field;
         public static Vector2 WindowSize;
         public static Vector2 MiddlePoint => WindowSize / 2;
         public static Vector2 FieldContainerSize;// = new Vector2(400,400);

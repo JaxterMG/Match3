@@ -31,6 +31,7 @@ namespace Core.StateMachine.Game
             _graphicsDevice = graphicsDevice;
             _contentManager = contentManager;
             _game = game;
+            
 
             GameConfig.CellSize = 32;
             GameConfig.GameFieldSize = 8;
@@ -40,6 +41,7 @@ namespace Core.StateMachine.Game
             GameConfig.SelectSizeModifier = 2;
 
             _gameField = new GameField(GameConfig.GameFieldSize, GameConfig.GameFieldSize);
+            GameConfig.Field = _gameField;
             _clickDetector = new ClickDetector(_gameField);
             _inputController.OnMouseClick += _clickDetector.CheckRectangle;
 
