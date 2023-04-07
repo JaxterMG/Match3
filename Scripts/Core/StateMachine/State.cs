@@ -18,6 +18,7 @@ namespace Core.StateMachine
             _contentManager = contentManager;
         }
         public abstract void Update(GameTime gameTime);
+        public abstract void LoadContent();
         public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
         
         

@@ -18,11 +18,6 @@ namespace Core.StateMachine.Game
         private readonly Texture2D _cellTexture;
         private readonly GameField _gameField;
 
-        private bool _isInitalized = false;
-
-        private readonly InputController _inputController;
-        private readonly ClickDetector _clickDetector;
-
         private readonly TimerDrawer _timerDrawer;
         private readonly FieldDrawer _fieldDrawer;
         private readonly ContainerDrawer _containerDrawer;
@@ -31,30 +26,9 @@ namespace Core.StateMachine.Game
 
         public LoseState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager) : base(game, graphicsDevice, contentManager)
         {
-            _fieldDrawer = new FieldDrawer();
-            _containerDrawer = new ContainerDrawer();
-            _inputController = new InputController();
             _graphicsDevice = graphicsDevice;
             _contentManager = contentManager;
             _game = game;
-            
-            GameConfig.CellSize = 32;
-            GameConfig.GameFieldSize = 8;
-            GameConfig.WindowSize = new Vector2(_graphicsDevice.Viewport.Width, _graphicsDevice.Viewport.Height);
-            GameConfig.FieldContainerSize = new Vector2(400, 400);
-            GameConfig.CellPadding = (int)GameConfig.FieldContainerSize.Length() / GameConfig.GameFieldSize;
-            GameConfig.SelectSizeModifier = 2;
-
-            _timerLogic = new TimerLogic(60);
-            _timerLogic.OnTimerEnd += EndGame;
-            _timerDrawer = new TimerDrawer();
-            _timerDrawer.Initialize(new Vector2(GameConfig.WindowSize.X / 2, 8));
-
-            _gameField = new GameField(GameConfig.GameFieldSize, GameConfig.GameFieldSize);
-            _clickDetector = new ClickDetector(_gameField);
-            _inputController.OnMouseClick += _clickDetector.CheckRectangle;
-
-            _containerDrawer.SetupRectangle();
 
             _cellTexture = _contentManager.Load<Texture2D>("Sprites/Square");
             LoadContent();
@@ -62,17 +36,6 @@ namespace Core.StateMachine.Game
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            var padding = GameConfig.CellPadding;
-
-            var cellSize = GameConfig.CellSize - padding;
-
-            if (!_isInitalized)
-            {
-                _isInitalized = _fieldDrawer.InitializeScreenPos(_gameField, _containerDrawer.FieldContainerRect, cellSize);
-                return;
-            }
-
-
             spriteBatch.Begin();
             _timerDrawer.DrawText(spriteBatch,((int)Math.Round(_timerLogic.Timer)).ToString(), Color.Black);
 
@@ -84,13 +47,6 @@ namespace Core.StateMachine.Game
 
         public override void Update(GameTime gameTime)
         {
-            _timerLogic.CountDown(gameTime);
-            _inputController.CheckMouseInput();
-        }
-
-        public void EndGame()
-        {
-            
         }
 
         public override void LoadContent()
