@@ -30,6 +30,8 @@ namespace Core.StateMachine.Menu
             spriteBatch.End();
         }
 
+        public override void LoadContent(){}
+
         public override void Update(GameTime gameTime)
         {
             MouseState mouseState = Mouse.GetState();
