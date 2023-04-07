@@ -29,10 +29,10 @@ namespace Match3
             IsMouseVisible = true;
             base.Initialize();
         }
-
         protected override void LoadContent()
         {
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
+            _currentState.LoadContent();
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
