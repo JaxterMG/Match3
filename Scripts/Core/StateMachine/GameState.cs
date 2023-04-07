@@ -6,6 +6,7 @@ using Core.Drawer.Field;
 using Core.Drawer.Timer;
 using Core.Field;
 using Core.Input.Detection;
+using Core.Points;
 using Core.Timer;
 using Match3;
 using Microsoft.Xna.Framework;
@@ -33,6 +34,7 @@ namespace Core.StateMachine.Game
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager, InputController inputController) : base(game, graphicsDevice, contentManager, inputController)
         {
+            PointsCounter.Points = 0;
             _fieldDrawer = new FieldDrawer();
             _containerDrawer = new ContainerDrawer();
             _inputController = new InputController();
@@ -76,7 +78,7 @@ namespace Core.StateMachine.Game
 
 
             spriteBatch.Begin();
-            _simpleMessageDrawer.DrawText(spriteBatch, "Score", Color.Black);
+            _simpleMessageDrawer.DrawText(spriteBatch, $"Score: {PointsCounter.Points}", Color.Black);
             _timerDrawer.DrawText(spriteBatch,((int)Math.Round(_timerLogic.Timer)).ToString(), Color.Black);
 
             _containerDrawer.Draw(spriteBatch, _cellTexture, new Vector2(_containerDrawer.FieldContainerRect.X, _containerDrawer.FieldContainerRect.Y), (int)GameConfig.FieldContainerSize.X);
