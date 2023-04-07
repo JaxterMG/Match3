@@ -6,20 +6,20 @@ namespace Core.Cells.Factory
 {
     public static class CellFactory
     {
-        public static CellElement CreateCellElement(CellType cellType, int x, int y, Vector2 screenPos)
+        public static CellElement CreateCellElement(CellType cellType, Color color, int x, int y, Vector2 screenPos)
         {
             switch (cellType)
             {
-                case CellType.Red:
-                    return new RedCellElement(cellType, Color.Red, x, y, GameConfig.CellSize, screenPos);
-                case CellType.Green:
-                    return new GreenCellElement(cellType, Color.Green, x, y, GameConfig.CellSize, screenPos);
-                case CellType.Blue:
-                    return new BlueCellElement(cellType, Color.Blue, x, y, GameConfig.CellSize, screenPos);
-                case CellType.Yellow:
-                    return new BlueCellElement(cellType, Color.Yellow, x, y, GameConfig.CellSize, screenPos);
-                case CellType.Pink:
-                    return new BlueCellElement(cellType, Color.Pink, x, y, GameConfig.CellSize, screenPos);
+                case CellType.Default:
+                    return new DefaultCellElement(cellType, color, x, y, GameConfig.CellSize, screenPos);
+                // case CellType.HorizontalLine,
+                //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
+                // case CellType.VerticalLine
+                //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
+                // case CellType.Bomb
+                //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
+                // case CellType.Destroyer
+                //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Empty:
                     return new EmptyCellElement(cellType, Color.Gray, x, y, GameConfig.CellSize, screenPos);
                 default:

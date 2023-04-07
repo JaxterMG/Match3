@@ -8,7 +8,7 @@ namespace MatchLogic
 {
     public static class MatchFinder
     {
-        public static async Task FindMatches(Cell currentCell)
+        public static List<Cell> FindMatches(Cell currentCell)
         {
             List<Cell> matches = new List<Cell>();
 
@@ -43,21 +43,18 @@ namespace MatchLogic
                     }
                 }).ToList();
                 matches = newItems;
-                foreach (var match in matches)
-                {
-                    match.ClearCell();
-                }
-                await GameConfig.Field.ShiftGrid();
+                
             }
+            return matches;
         }
-        
+
         public static void StartFindingRecursive(Cell currentCell, Cell exceptionCell, List<Cell> matches)
         {
             foreach (var neighbour in currentCell.Neighbours)
             {
                 if (matches.Contains(neighbour)) continue;
 
-                if (neighbour.CellElement.CellType.Equals(currentCell.CellElement.CellType))
+                if (neighbour.CellElement.Color.Equals(currentCell.CellElement.Color))
                 {
                     matches.Add(neighbour);
                     StartFindingRecursive(neighbour, currentCell, matches);

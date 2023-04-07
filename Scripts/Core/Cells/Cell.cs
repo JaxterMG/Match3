@@ -62,7 +62,8 @@ namespace Core.Cells
 
         public void ClearCell()
         {
-            CellElement = Factory.CellFactory.CreateCellElement(CellType.Empty, (int)Position.X, (int)Position.Y, ScreenPos);
+            CellElement.PopElement();
+            CellElement = Factory.CellFactory.CreateCellElement(CellType.Empty, Color.Gray, (int)Position.X, (int)Position.Y, ScreenPos);
         }
     }
     public abstract class CellElement
@@ -80,5 +81,6 @@ namespace Core.Cells
             Color = color;
             Size = size;
         }
+        public abstract void PopElement();
     }
 }

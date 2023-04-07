@@ -3,11 +3,11 @@ namespace Core.Cells
 {
     public enum CellType
     {
-        Red,
-        Green,
-        Blue,
-        Yellow,
-        Pink,
+        Default,
+        HorizontalLine,
+        VerticalLine,
+        Bomb,
+        Destroyer,
         Empty
     }
 }
