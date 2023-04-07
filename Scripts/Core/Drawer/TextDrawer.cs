@@ -8,6 +8,7 @@ namespace Core.Drawer
     {
         public SpriteFont Font;
         public Vector2 ScreenPos;
+        public Vector2 TextSize;
         public virtual void Initialize(Vector2 screenPos)
         {
             ScreenPos = screenPos;
@@ -21,6 +22,12 @@ namespace Core.Drawer
         public virtual void DrawText(SpriteBatch spriteBatch,  string text, Color color)
         {
             spriteBatch.DrawString(Font, text, ScreenPos, color);
+        }
+
+        public Vector2 MeasureText(string text)
+        {
+            TextSize = Font.MeasureString(text);
+            return TextSize;
         }
     }
 }

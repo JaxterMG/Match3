@@ -19,9 +19,6 @@ namespace Core.Input.Detection
             {
                 _clicked = false;
             }
-
-
         }
-
     }
 }

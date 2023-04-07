@@ -46,8 +46,8 @@ namespace Core.Drawer.Field
                 {
                     var cellRect = new Rectangle
                     (
-                        fieldContainerRect.X - x * cellSize,
-                        fieldContainerRect.Y - y * cellSize,
+                        fieldContainerRect.Width / gameField.Width + fieldContainerRect.X - x * cellSize,
+                        fieldContainerRect.Height / gameField.Height + fieldContainerRect.Y - y * cellSize,
                         GameConfig.CellSize, GameConfig.CellSize
                     );
                     gameField.Field[x, y].ScreenPos = new Vector2(cellRect.X, cellRect.Y);

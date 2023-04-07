@@ -1,5 +1,6 @@
 using System;
 using Core.Config;
+using Core.Drawer;
 using Core.Drawer.CellElement;
 using Core.Drawer.Field;
 using Core.Drawer.Timer;
@@ -26,16 +27,16 @@ namespace Core.StateMachine.Game
 
         private readonly TimerLogic _timerLogic;
 
+        private SimpleMessageDrawer _simpleMessageDrawer;
+
         private bool _isInitalized = false;
 
-        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager) : base(game, graphicsDevice, contentManager)
+        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager, InputController inputController) : base(game, graphicsDevice, contentManager, inputController)
         {
             _fieldDrawer = new FieldDrawer();
             _containerDrawer = new ContainerDrawer();
             _inputController = new InputController();
-            _graphicsDevice = graphicsDevice;
-            _contentManager = contentManager;
-            _game = game;
+            _simpleMessageDrawer = new SimpleMessageDrawer();
             
             GameConfig.CellSize = 32;
             GameConfig.GameFieldSize = 8;
@@ -43,6 +44,9 @@ namespace Core.StateMachine.Game
             GameConfig.FieldContainerSize = new Vector2(400, 400);
             GameConfig.CellPadding = (int)GameConfig.FieldContainerSize.Length() / GameConfig.GameFieldSize;
             GameConfig.SelectSizeModifier = 2;
+
+            _simpleMessageDrawer.Initialize(new Vector2(5, 8));
+            _simpleMessageDrawer.LoadFont(_contentManager);
 
             _timerLogic = new TimerLogic(60);
             _timerLogic.OnTimerEnd += EndGame;
@@ -72,6 +76,7 @@ namespace Core.StateMachine.Game
 
 
             spriteBatch.Begin();
+            _simpleMessageDrawer.DrawText(spriteBatch, "Score", Color.Black);
             _timerDrawer.DrawText(spriteBatch,((int)Math.Round(_timerLogic.Timer)).ToString(), Color.Black);
 
             _containerDrawer.Draw(spriteBatch, _cellTexture, new Vector2(_containerDrawer.FieldContainerRect.X, _containerDrawer.FieldContainerRect.Y), (int)GameConfig.FieldContainerSize.X);
@@ -88,7 +93,8 @@ namespace Core.StateMachine.Game
 
         public void EndGame()
         {
-            _game.ChangeState(new LoseState(_game, _graphicsDevice, _contentManager));
+            _game.ChangeState(new LoseState(_game, _graphicsDevice, _contentManager, _inputController));
+            _inputController.OnMouseClick -= _clickDetector.CheckRectangle;
         }
 
         public override void LoadContent()

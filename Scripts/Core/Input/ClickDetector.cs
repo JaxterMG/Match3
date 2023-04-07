@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Core.Cells;
 using Core.Config;
 using Core.Field;
@@ -35,7 +32,6 @@ namespace Core.Input.Detection
                     if (_selectedCell == null && _prevSelectedCell != null)
                     {
                         _prevSelectedCell = null;
-                        //break;
                     }
                     _selectedCell = _gameField.Field[x, y];
 
@@ -72,8 +68,6 @@ namespace Core.Input.Detection
                     break;
                 }
             }
-
-
         }
 
     }

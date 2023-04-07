@@ -1,4 +1,3 @@
-using Core.Config;
 using Core.Field;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,14 +8,14 @@ namespace Core.Drawer.CellElement
     {
         public Rectangle ButtonRectangle;
 
-        public void InitializeScreenPos(Vector2 screenPos, int size)
+        public void InitializeScreenPos(Vector2 screenPos, Vector2 size)
         {
             ButtonRectangle = new Rectangle
             (
-                (int)screenPos.X - size / 2,
-                (int)screenPos.Y - size / 2,
-                size,
-                size
+                (int)(screenPos.X - size.X / 2),
+                (int)(screenPos.Y - size.Y / 2),
+                (int)size.X,
+                (int)size.Y
             );
         }
 

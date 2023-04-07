@@ -14,6 +14,7 @@ namespace Core.Drawer.Timer
         {
             base.Initialize(screenPos);
         }
+        
         public override void LoadFont(ContentManager contentManager, string fontName = "Fonts/Arial")
         {
             if(String.IsNullOrEmpty(fontName))
@@ -22,7 +23,6 @@ namespace Core.Drawer.Timer
             }
             base.LoadFont(contentManager, fontName);
         }
-
 
         public override void DrawText(SpriteBatch spriteBatch, string text, Color color)
         {

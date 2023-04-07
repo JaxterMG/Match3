@@ -1,4 +1,5 @@
-﻿using Core.StateMachine;
+﻿using Core.Input.Detection;
+using Core.StateMachine;
 using Core.StateMachine.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,9 +10,9 @@ namespace Match3
     public class Game1 : Game
     {
         private State _currentState;
-        private State _nextState;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private InputController _inputController;
 
         public void ChangeState(State state)
         {
@@ -31,7 +32,8 @@ namespace Match3
         }
         protected override void LoadContent()
         {
-            _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
+            _inputController = new InputController();
+            _currentState = new MenuState(this, _graphics.GraphicsDevice, Content, _inputController);
             _currentState.LoadContent();
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
