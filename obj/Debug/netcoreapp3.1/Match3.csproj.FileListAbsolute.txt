@@ -48,3 +48,5 @@ C:\Unityprojects\Match3\obj\Debug\netcoreapp3.1\Match3.csproj.CopyComplete
 C:\Unityprojects\Match3\obj\Debug\netcoreapp3.1\Match3.dll
 C:\Unityprojects\Match3\obj\Debug\netcoreapp3.1\Match3.pdb
 C:\Unityprojects\Match3\obj\Debug\netcoreapp3.1\Match3.genruntimeconfig.cache
+C:\Unityprojects\Match3\bin\Debug\netcoreapp3.1\Content\Fonts\Default.xnb
+C:\Unityprojects\Match3\bin\Debug\netcoreapp3.1\Content\Fonts\Arial.xnb
