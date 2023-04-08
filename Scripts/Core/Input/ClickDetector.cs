@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Cells;
 using Core.Config;
 using Core.Field;
@@ -29,6 +30,7 @@ namespace Core.Input.Detection
                     Rectangle rect = new Rectangle((int)_gameField.Field[x, y].ScreenPos.X, (int)_gameField.Field[x, y].ScreenPos.Y, _gameField.Field[x, y].Size, _gameField.Field[x, y].Size);
 
                     if (!rect.Contains(mouseState.Position)) continue;
+                    if(_gameField.Field[x,y].CellElement.CellType == CellType.Empty) continue;
                     if (_selectedCell == null && _prevSelectedCell != null)
                     {
                         _prevSelectedCell = null;
@@ -64,9 +66,9 @@ namespace Core.Input.Detection
                     _prevSelectedCell.CellElement = temp;
                     await MatchFinder.FindMatches(_selectedCell);
                     await MatchFinder.FindMatches(_prevSelectedCell);
-
                     break;
                 }
+            
             }
         }
 

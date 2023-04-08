@@ -29,7 +29,6 @@ namespace Core.Field
             Field = new Cell[width, height];
             FillBoard();
             FindNeighbours();
-            CheckFieldMatches();
         }
 
         private void FillBoard()
@@ -45,7 +44,7 @@ namespace Core.Field
                 }
             }
         }
-        private void FindNeighbours()
+        private async void FindNeighbours()
         {
             for (int x = 0; x < Width; x++)
             {
@@ -54,27 +53,17 @@ namespace Core.Field
                     Field[x, y].FindNeighbours(Field);
                 }
             }
+           await CheckFieldMatches();
         }
-        public async Task CheckFieldMatches()
+       public async Task CheckFieldMatches()
         {
-            List<Cell> matches = new List<Cell>();
-
             for (int x = 0; x < Width; x++)
             {
                 for (int y = 0; y < Height; y++)
                 {
-                   matches.AddRange(MatchFinder.FindMatches(Field[x, y]));
+                    if(Field[x, y].CellElement.CellType == CellType.Empty) continue;
+                    await MatchFinder.FindMatches(Field[x, y]);
                 }
-            }
-            if(matches.Count > 0)
-            {
-                foreach(var match in matches)
-                {
-                    match.ClearCell();
-                }
-                await GameConfig.Field.ShiftGrid();
-                CheckFieldMatches();
-                await GenerateNewCellElements();
             }
         }
         public async Task ShiftGrid()
@@ -84,7 +73,6 @@ namespace Core.Field
                 var emtpyCels = 0;
                 for (int y = Field.GetLength(1) - 1; y >= 0; y--)
                 {
-
                     if (Field[x, y].CellElement.CellType == CellType.Empty)
                     {
                         emtpyCels++;
@@ -95,27 +83,21 @@ namespace Core.Field
                         Field[x, y].CellElement = CellFactory.CreateCellElement(CellType.Empty, Color.Gray, x, y, Field[x, y].ScreenPos);
                     }
                 }
-                if(emtpyCels > 0 || x == Field.GetLength(0)-1)
-                {
                     await Task.Delay(100);
-                }
             }
         }
         public async Task GenerateNewCellElements()
         {
             Random random = new Random();
             var emptyCells = 0;
-
             for (int x = 0; x < Width; x++)
             {
                 if (Field[x, 0].CellElement.CellType != CellType.Empty) continue;
                 emptyCells++;
-
-                int index = random.Next(_colors.Length - 1);
+                int index = random.Next(_colors.Length-1);
                 Field[x, 0].CellElement = CellFactory.CreateCellElement(CellType.Default, _colors[index], x, 0, Vector2.Zero);
             }
-            if (emptyCells > 0)
-                await ShiftGrid();
+                await Task.Delay(5);
         }
     }
 }

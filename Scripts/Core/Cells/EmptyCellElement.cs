@@ -10,7 +10,7 @@ namespace Core.Cells
 
         public override void PopElement()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 }

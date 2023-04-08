@@ -19,7 +19,7 @@ namespace Core.StateMachine.Game
     {
         private readonly Texture2D _cellTexture;
         private readonly GameField _gameField;
-        private readonly InputController _inputController;
+        
         private readonly ClickDetector _clickDetector;
 
         private readonly TimerDrawer _timerDrawer;
@@ -96,13 +96,17 @@ namespace Core.StateMachine.Game
         public void EndGame()
         {
             _game.ChangeState(new LoseState(_game, _graphicsDevice, _contentManager, _inputController));
-            _inputController.OnMouseClick -= _clickDetector.CheckRectangle;
         }
 
         public override void LoadContent()
         {
             _timerDrawer.LoadFont(_contentManager);
             
+        }
+
+        public override void OnExit()
+        {
+            _inputController.OnMouseClick -= _clickDetector.CheckRectangle;
         }
     }
         

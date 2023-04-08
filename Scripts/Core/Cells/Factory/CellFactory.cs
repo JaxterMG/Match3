@@ -21,7 +21,7 @@ namespace Core.Cells.Factory
                 // case CellType.Destroyer
                 //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Empty:
-                    return new EmptyCellElement(cellType, Color.Gray, x, y, GameConfig.CellSize, screenPos);
+                    return new EmptyCellElement(CellType.Empty, Color.Gray, x, y, GameConfig.CellSize, screenPos);
                 default:
                     throw new ArgumentException($"Invalid cell type '{cellType}'", nameof(cellType));
             }

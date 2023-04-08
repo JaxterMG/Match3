@@ -59,10 +59,9 @@ namespace Core.StateMachine.Game
             if (_buttonDrawer.ButtonRectangle.Contains(mouseState.Position))
             {
                 _game.ChangeState(new MenuState(_game, _graphicsDevice, _contentManager, _inputController));
-                _inputController.OnMouseClick -= CheckIfButtonPressed;
             }
         }
-        public async override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             _inputController.CheckMouseInput();
         }
@@ -70,6 +69,11 @@ namespace Core.StateMachine.Game
         public override void LoadContent()
         {
 
+        }
+
+        public override void OnExit()
+        {
+            _inputController.OnMouseClick -= CheckIfButtonPressed;
         }
     }
 }
