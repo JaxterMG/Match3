@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Unityprojects/Match3/Content/Sprites/Square.png</SourceFile>
-  <SourceTime>2023-04-05T11:28:16.5427978+03:00</SourceTime>
-  <DestFile>c:/Unityprojects/Match3/Content/bin/DesktopGL/Content/Sprites/Square.xnb</DestFile>
-  <DestTime>2023-04-08T04:20:26.9141595+03:00</DestTime>
+  <SourceFile>c:/GitHub/Match3MonoGame/Match3/Content/Sprites/Square.png</SourceFile>
+  <SourceTime>2023-04-01T14:42:23.90023+03:00</SourceTime>
+  <DestFile>c:/GitHub/Match3MonoGame/Match3/Content/bin/DesktopGL/Content/Sprites/Square.xnb</DestFile>
+  <DestTime>2023-04-08T15:02:37.8237353+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T19:17:54+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
