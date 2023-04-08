@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Unityprojects/Match3/Content/Fonts/Arial.spritefont</File>
-    <File>C:/Unityprojects/Match3/Content/Sprites/Square.png</File>
+    <File>c:/Unityprojects/Match3/Content/Fonts/Arial.spritefont</File>
+    <File>c:/Unityprojects/Match3/Content/Sprites/Square.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
