@@ -1,2 +1,6 @@
 bin/
 obj/
+Content/obj/DesktopGL/Content/.mgcontent
+Content/obj/DesktopGL/Content/.mgstats
+Content/obj/DesktopGL/Content/Fonts/Arial.mgcontent
+Content/obj/DesktopGL/Content/Sprites/Square.mgcontent
