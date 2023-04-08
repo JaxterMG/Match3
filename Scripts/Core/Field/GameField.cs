@@ -29,7 +29,7 @@ namespace Core.Field
             Field = new Cell[width, height];
             FillBoard();
             FindNeighbours();
-            StartCheck(Field[0, 0]);
+            StartCheck(Field[0, 0], 0);
         }
 
         private void FillBoard()
@@ -55,21 +55,24 @@ namespace Core.Field
                 }
             }
         }
-        public void StartCheck(Cell startingCell)
+        public async void StartCheck(Cell startingCell, int delay)
         {
             while (true)
             {
+                GameConfig.BlockInput = true;
+                
                 List<List<Cell>> matches = MatchFinder.FindMatches(this, startingCell);
 
                 if (matches.Count == 0) break;
 
-                ClearMatches(matches);
-                ShiftGrid();
+                await ClearMatches(matches, delay);
+                await ShiftGrid(delay);
                 GenerateNewCellElements();
                 startingCell = Field[0,0];
             }
+            GameConfig.BlockInput = false;
         }
-        private void ClearMatches(List<List<Cell>> matches)
+        private async Task ClearMatches(List<List<Cell>> matches, int delay)
         {
             foreach (var match in matches)
             {
@@ -77,10 +80,11 @@ namespace Core.Field
                 {
                     cell.ClearCell();
                 }
+                await Task.Delay(delay);
             }
         }
 
-        private void ShiftGrid()
+        private async Task ShiftGrid(int delay)
         {
             for (int x = 0; x < Field.GetLength(0); x++)
             {
@@ -105,6 +109,7 @@ namespace Core.Field
                         Field[x, i].CellElement = CellFactory.CreateCellElement(CellType.Default, _colors[index], x, i, Vector2.Zero);
                     }
                 }
+                await Task.Delay(delay);
             }
         }
 

@@ -1,3 +1,4 @@
+using Core.Config;
 using Microsoft.Xna.Framework.Input;
 
 namespace Core.Input.Detection
@@ -8,6 +9,9 @@ namespace Core.Input.Detection
         public event System.Action OnMouseClick;
         public void CheckMouseInput()
         {
+            if(GameConfig.BlockInput)
+                return;
+                
             var mouseCurrentState = Mouse.GetState();
 
             if (mouseCurrentState.LeftButton == ButtonState.Pressed && !_clicked)

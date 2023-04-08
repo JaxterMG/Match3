@@ -65,10 +65,10 @@ namespace Core.Input.Detection
                     _selectedCell.CellElement = _prevSelectedCell.CellElement;
                     _prevSelectedCell.CellElement = temp;
                     var selectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
-                    if (selectedCellMatches.Count > 0) _gameField.StartCheck(_selectedCell);
+                    if (selectedCellMatches.Count > 0) _gameField.StartCheck(_selectedCell, 100);
 
                     var prevSelectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
-                    if (prevSelectedCellMatches.Count > 0) _gameField.StartCheck(_prevSelectedCell);
+                    if (prevSelectedCellMatches.Count > 0) _gameField.StartCheck(_prevSelectedCell, 100);
                     if (selectedCellMatches.Count == 0 && prevSelectedCellMatches.Count == 0)
                     {
                         CellElement backTemp = _selectedCell.CellElement;

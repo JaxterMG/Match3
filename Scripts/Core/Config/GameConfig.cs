@@ -5,6 +5,7 @@ namespace Core.Config
 {
     public static class GameConfig
     {
+        public static bool BlockInput;
         public static GameField Field;
         public static Vector2 WindowSize;
         public static Vector2 MiddlePoint => WindowSize / 2;
