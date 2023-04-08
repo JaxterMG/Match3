@@ -12,6 +12,8 @@ namespace MatchLogic
         public static List<List<Cell>> FindMatches(GameField gameField, Cell startCell)
         {
             List<List<Cell>> matches = new List<List<Cell>>();
+            if(startCell.CellElement.CellType == CellType.Empty)
+                return matches;
             bool[,] visited = new bool[gameField.Field.GetLength(0), gameField.Field.GetLength(1)];
 
             int startX = (int)startCell.Position.X;

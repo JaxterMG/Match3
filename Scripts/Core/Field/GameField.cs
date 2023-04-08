@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework;
 using Core.Config;
 using System.Threading.Tasks;
 using MatchLogic;
+using System.Linq;
+using Core.Points;
 
 namespace Core.Field
 {
@@ -30,6 +32,7 @@ namespace Core.Field
             FillBoard();
             FindNeighbours();
             StartCheck(Field[0, 0], 0);
+            PointsCounter.ClearPoint();
         }
 
         private void FillBoard()
@@ -60,15 +63,32 @@ namespace Core.Field
             while (true)
             {
                 GameConfig.BlockInput = true;
-                
+
                 List<List<Cell>> matches = MatchFinder.FindMatches(this, startingCell);
+
+                var cellsWithSameX = new List<List<Cell>>();
+                var cellsWithSameY = new List<List<Cell>>();
+
+                foreach (var match in matches)
+                {
+                    var cellsByX = match.GroupBy(cell => cell.Position.X)
+                        .Where(group => group.Count() >= 3)
+                        .Select(group => group.Distinct().ToList());
+                    cellsWithSameX.AddRange(cellsByX);
+
+                    var cellsByY = match.GroupBy(cell => cell.Position.Y)
+                        .Where(group => group.Count() >= 3)
+                        .Select(group => group.Distinct().ToList());
+                    cellsWithSameY.AddRange(cellsByY);
+                }
+                matches = cellsWithSameX.Union(cellsWithSameY).ToList();
 
                 if (matches.Count == 0) break;
 
                 await ClearMatches(matches, delay);
                 await ShiftGrid(delay);
                 GenerateNewCellElements();
-                startingCell = Field[0,0];
+                startingCell = Field[0, 0];
             }
             GameConfig.BlockInput = false;
         }
@@ -76,6 +96,15 @@ namespace Core.Field
         {
             foreach (var match in matches)
             {
+                foreach (var cell in match)
+                {
+                    if(cell.CellElement.CellType == CellType.Empty)
+                        return;
+
+                    cell.CellElement.Size += 4;
+                }
+                await Task.Delay(delay);
+
                 foreach (var cell in match)
                 {
                     cell.ClearCell();

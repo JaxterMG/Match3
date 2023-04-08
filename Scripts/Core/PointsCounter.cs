@@ -9,6 +9,10 @@ namespace Core.Points
         {
             Points += points;
         }
+        public static void ClearPoint()
+        {
+            Points = 0;
+        }
         
     }
 }
