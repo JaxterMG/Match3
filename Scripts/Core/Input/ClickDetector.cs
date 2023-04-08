@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Core.Cells;
 using Core.Config;
 using Core.Field;
@@ -64,12 +63,16 @@ namespace Core.Input.Detection
                     CellElement temp = _selectedCell.CellElement;
                     _selectedCell.CellElement = _prevSelectedCell.CellElement;
                     _prevSelectedCell.CellElement = temp;
-                    var selectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
-                    if (selectedCellMatches.Count > 0) _gameField.StartCheck(_selectedCell, 100);
+                    var selectedCellMatches = MatchFinder.FindMatchesForCell(_gameField, _selectedCell);
 
-                    var prevSelectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
-                    if (prevSelectedCellMatches.Count > 0) _gameField.StartCheck(_prevSelectedCell, 100);
-                    if (selectedCellMatches.Count == 0 && prevSelectedCellMatches.Count == 0)
+                    var prevSelectedCellMatches = MatchFinder.FindMatchesForCell(_gameField, _prevSelectedCell);
+
+                    if (selectedCellMatches.Count >= 3 || prevSelectedCellMatches.Count >= 3)
+                    {
+                        _gameField.StartCheck(_selectedCell, 100);
+                        _gameField.StartCheck(_prevSelectedCell, 100);
+                    }
+                    else
                     {
                         CellElement backTemp = _selectedCell.CellElement;
                         _selectedCell.CellElement = _prevSelectedCell.CellElement;

@@ -11,9 +11,9 @@ namespace Core.Cells.Factory
             switch (cellType)
             {
                 case CellType.Default:
-                    return new DefaultCellElement(cellType, color, x, y, GameConfig.CellSize, screenPos);
-                // case CellType.HorizontalLine,
-                //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
+                    return new DefaultCellElement(cellType, color, GameConfig.DefaultCell, x, y, GameConfig.CellSize, screenPos);
+                case CellType.HorizontalLine:
+                    return new HorizontalCellElement(cellType, color, GameConfig.HorizontalLineCell, x, y, GameConfig.CellSize, screenPos);
                 // case CellType.VerticalLine
                 //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
                 // case CellType.Bomb
@@ -21,7 +21,7 @@ namespace Core.Cells.Factory
                 // case CellType.Destroyer
                 //     return new DefaultCellElement(cellType, Color, x, y, GameConfig.CellSize, screenPos);
                 case CellType.Empty:
-                    return new EmptyCellElement(CellType.Empty, Color.Gray, x, y, GameConfig.CellSize, screenPos);
+                    return new EmptyCellElement(CellType.Empty, Color.Gray, GameConfig.DefaultCell, x, y, GameConfig.CellSize, screenPos);
                 default:
                     throw new ArgumentException($"Invalid cell type '{cellType}'", nameof(cellType));
             }

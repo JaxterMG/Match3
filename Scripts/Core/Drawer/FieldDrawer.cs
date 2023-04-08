@@ -28,7 +28,7 @@ namespace Core.Drawer.Field
                         gameField.Field[x, y].CellElement.Size - 6, gameField.Field[x, y].CellElement.Size - 6
                     );
 
-                    spriteBatch.Draw(cellTexture, cellElementRect, gameField.Field[x, y].CellElement.Color);
+                    spriteBatch.Draw(gameField.Field[x, y].CellElement.CellSprite, cellElementRect, gameField.Field[x, y].CellElement.Color);
                 }
             }
         }

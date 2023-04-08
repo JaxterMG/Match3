@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
 using Core.Field;
+using Core.Points;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Core.Cells
 {
@@ -73,14 +75,20 @@ namespace Core.Cells
         public Vector2 ScreenPos { get; set; }
         public Vector2 Position { get; set; }
         public int Size { get; set; }
-        public CellElement(CellType cellType, Color color, int x, int y, int size, Vector2 screenPos)
+        protected int _points;
+        public Texture2D CellSprite;
+        public CellElement(CellType cellType, Color color, Texture2D cellSprite, int x, int y, int size, Vector2 screenPos)
         {
+            CellSprite = cellSprite;
             ScreenPos = screenPos;
             Position = new Vector2(x, y);
             CellType = cellType;
             Color = color;
             Size = size;
         }
-        public abstract void PopElement();
+        public virtual void PopElement()
+        {
+            PointsCounter.AddPoints(_points);
+        }
     }
 }

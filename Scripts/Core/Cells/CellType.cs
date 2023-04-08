@@ -7,7 +7,6 @@ namespace Core.Cells
         HorizontalLine,
         VerticalLine,
         Bomb,
-        Destroyer,
         Empty
     }
 }

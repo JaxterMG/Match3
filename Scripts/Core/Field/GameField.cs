@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MatchLogic;
 using System.Linq;
 using Core.Points;
+using Core.SpecialCells;
 
 namespace Core.Field
 {
@@ -21,11 +22,14 @@ namespace Core.Field
 
         public Vector2 StartPos;
         private Color[] _colors;
+
+        private SpecialCellsHandler _specialCellsHandler;
+
         public GameField(int width, int height)
         {
             _colors = new Color[5] { Color.Red, Color.Blue, Color.Green, Color.Pink, Color.Gray };
             GameConfig.Field = this;
-
+            _specialCellsHandler = new SpecialCellsHandler();
             this.Width = width;
             this.Height = height;
             Field = new Cell[width, height];
@@ -60,11 +64,14 @@ namespace Core.Field
         }
         public async void StartCheck(Cell startingCell, int delay)
         {
+            if(GameConfig.BlockInput)
+            return;
             while (true)
             {
                 GameConfig.BlockInput = true;
+                if(startingCell.CellElement.CellType == CellType.Empty) continue;
 
-                List<List<Cell>> matches = MatchFinder.FindMatches(this, startingCell);
+                List<List<Cell>> matches = MatchFinder.FindMatches(this, Field[0, 0]);
 
                 var cellsWithSameX = new List<List<Cell>>();
                 var cellsWithSameY = new List<List<Cell>>();
@@ -81,34 +88,56 @@ namespace Core.Field
                         .Select(group => group.Distinct().ToList());
                     cellsWithSameY.AddRange(cellsByY);
                 }
+                _specialCellsHandler.CheckForSpecialConditions(cellsWithSameY.Count, cellsWithSameX.Count);
                 matches = cellsWithSameX.Union(cellsWithSameY).ToList();
 
                 if (matches.Count == 0) break;
 
                 await ClearMatches(matches, delay);
                 await ShiftGrid(delay);
-                GenerateNewCellElements();
+                await GenerateNewCellElements();
+                
                 startingCell = Field[0, 0];
             }
             GameConfig.BlockInput = false;
         }
+
         private async Task ClearMatches(List<List<Cell>> matches, int delay)
         {
             foreach (var match in matches)
             {
                 foreach (var cell in match)
                 {
-                    if(cell.CellElement.CellType == CellType.Empty)
+                    if (cell.CellElement.CellType == CellType.Empty)
                         return;
 
                     cell.CellElement.Size += 4;
                 }
                 await Task.Delay(delay);
 
-                foreach (var cell in match)
+
+                var color = match[0].CellElement.Color;
+                List<SpecialCellElement> specialCellElements = match.OfType<SpecialCellElement>().ToList();
+                if (specialCellElements.Count <= 0)
                 {
-                    cell.ClearCell();
+                    foreach (var cell in match)
+                    {
+                        cell.ClearCell();
+                    }
+
+                    if (_specialCellsHandler.HasSpecialConditions)
+                    {
+                        _specialCellsHandler.RequestSpecialCell(match[0], color);
+                    }
                 }
+                else
+                {
+                    foreach (var cellElements in specialCellElements)
+                    {
+                        cellElements.PopElement();
+                    }
+                }
+
                 await Task.Delay(delay);
             }
         }
@@ -142,7 +171,7 @@ namespace Core.Field
             }
         }
 
-        public void GenerateNewCellElements()
+        public async Task GenerateNewCellElements()
         {
             Random random = new Random();
             while (true)
@@ -159,6 +188,7 @@ namespace Core.Field
                 }
                 if (!foundEmptyCell) break;
             }
+            await Task.Yield();
         }
     }
 }

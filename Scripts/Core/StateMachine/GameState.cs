@@ -34,6 +34,9 @@ namespace Core.StateMachine.Game
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager, InputController inputController) : base(game, graphicsDevice, contentManager, inputController)
         {
+            _cellTexture = _contentManager.Load<Texture2D>("Sprites/Square");
+            GameConfig.DefaultCell = _cellTexture;
+            GameConfig.HorizontalLineCell = _contentManager.Load<Texture2D>("Sprites/HorizontalSpecial");
             PointsCounter.Points = 0;
             _fieldDrawer = new FieldDrawer();
             _containerDrawer = new ContainerDrawer();
@@ -60,8 +63,7 @@ namespace Core.StateMachine.Game
             _inputController.OnMouseClick += _clickDetector.CheckRectangle;
 
             _containerDrawer.SetupRectangle();
-
-            _cellTexture = _contentManager.Load<Texture2D>("Sprites/Square");
+            
             LoadContent();
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
