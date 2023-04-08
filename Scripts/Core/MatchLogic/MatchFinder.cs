@@ -3,68 +3,56 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Cells;
 using Core.Config;
+using Core.Field;
 
 namespace MatchLogic
 {
     public static class MatchFinder
     {
-        public static async Task FindMatches(Cell currentCell)
+        public static List<List<Cell>> FindMatches(GameField gameField, Cell startCell)
         {
-            bool matchesFound = false;
-            List<Cell> matches = new List<Cell>();
-            matches.Add(currentCell);
-            StartFindingRecursive(currentCell, matches);
-            if (matches.Count >= 3)
+            List<List<Cell>> matches = new List<List<Cell>>();
+            bool[,] visited = new bool[gameField.Field.GetLength(0), gameField.Field.GetLength(1)];
+
+            int startX = (int)startCell.Position.X;
+            int startY = (int)startCell.Position.Y;
+
+            for (int i = startX; i < gameField.Field.GetLength(0); i++)
             {
-                var xGroups = matches.GroupBy(item => item.Position.X)
-                   .Where(group => group.Count() > 2);
-                var yGroups = matches.GroupBy(item => item.Position.Y)
-                                   .Where(group => group.Count() > 2);
-                var intersectingItems = xGroups.SelectMany(group => group)
-                                               .Union(yGroups.SelectMany(group => group));
-                var newItems = matches.Where(item =>
+                for (int j = startY; j < gameField.Field.GetLength(1); j++)
                 {
-                    if (intersectingItems.Contains(item))
+                    Cell currentCell = gameField.Field[i, j];
+
+                    if (!visited[i, j] && currentCell.CellElement.CellType != CellType.Empty)
                     {
-                        return true;
+                        List<Cell> match = new List<Cell>();
+                        match.Add(currentCell);
+                        visited[i, j] = true;
+                        StartFindingRecursive(currentCell, match);
+
+                        if (match.Count >= 3)
+                        {
+                            matches.Add(match);
+                        }
                     }
-                    else if (xGroups.Any(group => group.Key == item.Position.X && group.Count() > 2)
-                             || yGroups.Any(group => group.Key == item.Position.Y && group.Count() > 2))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }).ToList();
-                matches = newItems;
-                matchesFound = true;
-                foreach (var match in matches)
-                {
-                    match.ClearCell();
-                    await Task.Delay(10);
                 }
-                await GameConfig.Field.ShiftGrid();
-                await GameConfig.Field.CheckFieldMatches();
             }
-            if(!matchesFound)
-            {
-               await GameConfig.Field.GenerateNewCellElements();
-            }
+
+            return matches;
         }
 
-        public static void StartFindingRecursive(Cell currentCell, List<Cell> matches)
+
+        public static void StartFindingRecursive(Cell currentCell, List<Cell> match)
         {
             foreach (var neighbour in currentCell.Neighbours)
             {
-                if (matches.Contains(neighbour)) continue;
-                if(neighbour.CellElement.CellType == CellType.Empty) continue;
+                if (match.Contains(neighbour)) continue;
+                if (neighbour.CellElement.CellType == CellType.Empty) continue;
 
                 if (neighbour.CellElement.Color.Equals(currentCell.CellElement.Color))
                 {
-                    matches.Add(neighbour);
-                    StartFindingRecursive(neighbour, matches);
+                    match.Add(neighbour);
+                    StartFindingRecursive(neighbour, match);
                 }
             }
         }

@@ -30,7 +30,7 @@ namespace Core.Input.Detection
                     Rectangle rect = new Rectangle((int)_gameField.Field[x, y].ScreenPos.X, (int)_gameField.Field[x, y].ScreenPos.Y, _gameField.Field[x, y].Size, _gameField.Field[x, y].Size);
 
                     if (!rect.Contains(mouseState.Position)) continue;
-                    if(_gameField.Field[x,y].CellElement.CellType == CellType.Empty) continue;
+                    if (_gameField.Field[x, y].CellElement.CellType == CellType.Empty) continue;
                     if (_selectedCell == null && _prevSelectedCell != null)
                     {
                         _prevSelectedCell = null;
@@ -55,7 +55,7 @@ namespace Core.Input.Detection
                 }
             }
         }
-        private async void SwapElements()
+        private void SwapElements()
         {
             foreach (var neighbour in _prevSelectedCell.Neighbours)
             {
@@ -64,11 +64,21 @@ namespace Core.Input.Detection
                     CellElement temp = _selectedCell.CellElement;
                     _selectedCell.CellElement = _prevSelectedCell.CellElement;
                     _prevSelectedCell.CellElement = temp;
-                    await MatchFinder.FindMatches(_selectedCell);
-                    await MatchFinder.FindMatches(_prevSelectedCell);
+                    var selectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
+                    if (selectedCellMatches.Count > 0) _gameField.StartCheck(_selectedCell);
+
+                    var prevSelectedCellMatches = MatchFinder.FindMatches(_gameField, _selectedCell);
+                    if (prevSelectedCellMatches.Count > 0) _gameField.StartCheck(_prevSelectedCell);
+                    if (selectedCellMatches.Count == 0 && prevSelectedCellMatches.Count == 0)
+                    {
+                        CellElement backTemp = _selectedCell.CellElement;
+                        _selectedCell.CellElement = _prevSelectedCell.CellElement;
+                        _prevSelectedCell.CellElement = backTemp;
+                    }
+
                     break;
                 }
-            
+
             }
         }
 

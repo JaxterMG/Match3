@@ -21,7 +21,7 @@ namespace Core.Field
         private Color[] _colors;
         public GameField(int width, int height)
         {
-            _colors = new Color[5]{Color.Red, Color.Blue, Color.Green, Color.Pink, Color.Gray};
+            _colors = new Color[5] { Color.Red, Color.Blue, Color.Green, Color.Pink, Color.Gray };
             GameConfig.Field = this;
 
             this.Width = width;
@@ -29,6 +29,7 @@ namespace Core.Field
             Field = new Cell[width, height];
             FillBoard();
             FindNeighbours();
+            StartCheck(Field[0, 0]);
         }
 
         private void FillBoard()
@@ -44,7 +45,7 @@ namespace Core.Field
                 }
             }
         }
-        private async void FindNeighbours()
+        private void FindNeighbours()
         {
             for (int x = 0; x < Width; x++)
             {
@@ -53,51 +54,77 @@ namespace Core.Field
                     Field[x, y].FindNeighbours(Field);
                 }
             }
-           await CheckFieldMatches();
         }
-       public async Task CheckFieldMatches()
+        public void StartCheck(Cell startingCell)
         {
-            for (int x = 0; x < Width; x++)
+            while (true)
             {
-                for (int y = 0; y < Height; y++)
+                List<List<Cell>> matches = MatchFinder.FindMatches(this, startingCell);
+
+                if (matches.Count == 0) break;
+
+                ClearMatches(matches);
+                ShiftGrid();
+                GenerateNewCellElements();
+                startingCell = Field[0,0];
+            }
+        }
+        private void ClearMatches(List<List<Cell>> matches)
+        {
+            foreach (var match in matches)
+            {
+                foreach (var cell in match)
                 {
-                    if(Field[x, y].CellElement.CellType == CellType.Empty) continue;
-                    await MatchFinder.FindMatches(Field[x, y]);
+                    cell.ClearCell();
                 }
             }
         }
-        public async Task ShiftGrid()
+
+        private void ShiftGrid()
         {
             for (int x = 0; x < Field.GetLength(0); x++)
             {
-                var emtpyCels = 0;
+                var emptyCells = 0;
                 for (int y = Field.GetLength(1) - 1; y >= 0; y--)
                 {
                     if (Field[x, y].CellElement.CellType == CellType.Empty)
                     {
-                        emtpyCels++;
+                        emptyCells++;
                     }
-                    else if (emtpyCels > 0 && Field[x, y].CellElement.CellType != CellType.Empty)
+                    else if (emptyCells > 0 && Field[x, y].CellElement.CellType != CellType.Empty)
                     {
-                        Field[x, y + emtpyCels].CellElement = Field[x, y].CellElement;
+                        Field[x, y + emptyCells].CellElement = Field[x, y].CellElement;
                         Field[x, y].CellElement = CellFactory.CreateCellElement(CellType.Empty, Color.Gray, x, y, Field[x, y].ScreenPos);
                     }
                 }
-                    await Task.Delay(100);
+                if (emptyCells > 0)
+                {
+                    for (int i = 0; i < emptyCells; i++)
+                    {
+                        int index = new Random().Next(_colors.Length - 1);
+                        Field[x, i].CellElement = CellFactory.CreateCellElement(CellType.Default, _colors[index], x, i, Vector2.Zero);
+                    }
+                }
             }
         }
-        public async Task GenerateNewCellElements()
+
+        public void GenerateNewCellElements()
         {
             Random random = new Random();
-            var emptyCells = 0;
-            for (int x = 0; x < Width; x++)
+            while (true)
             {
-                if (Field[x, 0].CellElement.CellType != CellType.Empty) continue;
-                emptyCells++;
-                int index = random.Next(_colors.Length-1);
-                Field[x, 0].CellElement = CellFactory.CreateCellElement(CellType.Default, _colors[index], x, 0, Vector2.Zero);
+                bool foundEmptyCell = false;
+                for (int x = 0; x < Width; x++)
+                {
+                    if (Field[x, 0].CellElement.CellType == CellType.Empty)
+                    {
+                        foundEmptyCell = true;
+                        int index = random.Next(_colors.Length);
+                        Field[x, 0].CellElement = CellFactory.CreateCellElement(CellType.Default, _colors[index], x, 0, Vector2.Zero);
+                    }
+                }
+                if (!foundEmptyCell) break;
             }
-                await Task.Delay(5);
         }
     }
 }
